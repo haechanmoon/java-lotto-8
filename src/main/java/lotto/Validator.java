@@ -1,8 +1,15 @@
 package lotto;
 
 public class Validator {
-    public static void validatePurchaseAmount(int purchaseAmount) {
-        if ((purchaseAmount%1000)!=0){
+    public static void validatePurchaseAmount(String input) {
+        int purchaseAmount;
+        try {
+            purchaseAmount = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다.");
+        }
+
+        if ((purchaseAmount % 1000) != 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해야합니다");
         }
     }
