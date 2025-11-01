@@ -17,4 +17,15 @@ class ValidatorTest {
         assertThatThrownBy(()-> Validator.validatePurchaseAmount(purchaseAmount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("구입 금액이 1000원 단위가 아닌 경우 예외 발생 후 재입력 해야한다.")
+    void 구입_금액이_숫자가_아닐_때(){
+        //given
+        String purchaseAmount = "abc";
+
+        //when&then
+        assertThatThrownBy(()-> Validator.validatePurchaseAmount(purchaseAmount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
