@@ -36,4 +36,19 @@ class LottoRankTest {
         assertThat(rank).isEqualTo(LottoRank.SECOND);
         assertThat(rank.getWinnings()).isEqualTo(30_000_000);
     }
+
+    @Test
+    @DisplayName("5개 일치 + 보너스 불일치 시 3등을 반환한다")
+    void valueOf_5_matches_without_bonus() {
+        // given
+        int matchCount = 5;
+        boolean bonusMatch = false;
+
+        // when
+        LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
+
+        // then
+        assertThat(rank).isEqualTo(LottoRank.THIRD);
+    }
+
 }
