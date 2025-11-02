@@ -8,7 +8,7 @@ public enum LottoRank {
     THIRD(5, 1_500_000, "5개 일치"),
     FOURTH(4, 50_000, "4개 일치"),
     FIFTH(3, 5_000, "3개 일치"),
-    MISS(0, 0, "");
+    MISS(0, 0, "꽝");
 
     private final int matchCount;
     private final int winnings;

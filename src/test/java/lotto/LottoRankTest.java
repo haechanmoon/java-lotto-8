@@ -81,4 +81,19 @@ class LottoRankTest {
         assertThat(rank).isEqualTo(LottoRank.FIFTH);
         assertThat(rank.getWinnings()).isEqualTo(5_000);
     }
+
+    @Test
+    @DisplayName("3개 미만 일치 시 꽝(MISS)을 반환한다")
+    void 세개_미만_일치_시_꽝_반환() {
+        // given
+        int matchCount = 2;
+        boolean bonusMatch = false;
+
+        // when
+        LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
+
+        // then
+        assertThat(rank).isEqualTo(LottoRank.MISS);
+        assertThat(rank.getWinnings()).isEqualTo(0); // 상금은 0원
+    }
 }

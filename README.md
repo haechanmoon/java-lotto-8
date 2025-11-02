@@ -61,4 +61,4 @@
 - [x] (LottoRank) 5개 일치 + 보너스 불일치 시 3등 반환 테스트
 - [x] (LottoRank) 4개 일치 시 4등을 반환 테스트
 - [x] (LottoRank) 3개 일치 시 5등을 반환 테스트
-- [ ] (LottoRank) 3개 미만 일치 시 반환 없음(MISS)
+- [x] (LottoRank) 3개 미만 일치 시 꽝 반환 테스트
