@@ -6,7 +6,7 @@ import java.util.Map;
 public class OutputView {
 
     public void printLottoCount(int count) {
-        System.out.println(count + Messages.VIEW_PURCHASE_TOTAL_LOTTO);
+        System.out.println("\n" + count + Messages.VIEW_PURCHASE_TOTAL_LOTTO);
     }
 
     public void printLottos(List<Lotto> lottos) {
