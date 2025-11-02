@@ -50,4 +50,15 @@ class ValidatorTest {
         assertThatThrownBy(() -> Validator.validateWinningNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("당첨 번호에 중복이 있을 때 예외 발생")
+    void 당첨_번호에_중복이_있을_때() {
+        // given
+        String input = "1,1,2,3,4,5";
+
+        // when & then
+        assertThatThrownBy(() -> Validator.validateWinningNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
