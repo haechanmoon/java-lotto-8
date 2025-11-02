@@ -46,7 +46,7 @@ public class InputView {
                 return bonusNumber;
 
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage()); // (5) 실패 시 재시도!
+                System.out.println(e.getMessage());
             }
         }
     }

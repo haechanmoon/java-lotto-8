@@ -2,7 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public class LottoGame {
     private final InputView inputView;
@@ -20,7 +22,21 @@ public class LottoGame {
         List<Lotto> purchasedLottos = generateLottos(lottoCount);
         outputView.printLottos(purchasedLottos);
         List<Integer> winningNumbers = inputView.getWinningNumbers();
+        Lotto winningLotto = new Lotto(winningNumbers);
         int bonusNumber = inputView.getBonusNumber(winningNumbers);
+        Map<LottoRank, Integer> statistics = new EnumMap<>(LottoRank.class);
+        for (LottoRank rank : LottoRank.values()) {
+            statistics.put(rank, 0);
+        }
+        for (Lotto lotto : purchasedLottos) {
+            int matchCount = lotto.countMatchingNumbers(winningLotto);
+            boolean bonusMatch = lotto.containsNumber(bonusNumber);
+
+            LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
+
+            statistics.put(rank, statistics.get(rank) + 1);
+        }
+        outputView.printWinningStatistics(statistics);
     }
 
     private List<Lotto> generateLottos(int lottoCount) {
