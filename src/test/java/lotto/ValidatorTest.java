@@ -61,4 +61,15 @@ class ValidatorTest {
         assertThatThrownBy(() -> Validator.validateWinningNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("보너스 번호가 범위 밖에 있을 때 예외 발생")
+    void 보너스_번호가_범위_밖에_있을_때() {
+        // given
+        String input = "46";
+
+        // when & then
+        assertThatThrownBy(() -> Validator.validateBonusNumber(input, Validator.validateWinningNumbers(input)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
