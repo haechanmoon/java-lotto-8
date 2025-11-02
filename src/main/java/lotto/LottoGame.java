@@ -19,6 +19,7 @@ public class LottoGame {
         outputView.printLottoCount(lottoCount);
         List<Lotto> purchasedLottos = generateLottos(lottoCount);
         outputView.printLottos(purchasedLottos);
+        inputView.getWinningNumbers();
     }
 
     private List<Lotto> generateLottos(int lottoCount) {

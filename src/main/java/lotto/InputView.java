@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class InputView {
 
@@ -17,4 +18,20 @@ public class InputView {
             }
         }
     }
+
+    public List<Integer> getWinningNumbers() {
+        while (true) {
+            try {
+                System.out.println(Messages.ASK_WINNING_NUMBER);
+                String input = Console.readLine();
+
+                List<Integer> winningNumbers = Validator.validateWinningNumbers(input);
+                return winningNumbers;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+
 }

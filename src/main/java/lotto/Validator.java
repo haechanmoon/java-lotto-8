@@ -1,5 +1,10 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Validator {
     public static int validatePurchaseAmount(String input) {
         int purchaseAmount;
@@ -17,5 +22,34 @@ public class Validator {
         return purchaseAmount;
     }
 
+    public static List<Integer> validateWinningNumbers(String input) {
+        String[] numberStrings = input.split(",");
+        if (numberStrings.length != 6) {
+            throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBER_COUNT);
+        }
+        List<Integer> numbers = new ArrayList<>();
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        for (String numberStr : numberStrings) {
+            int number = validateNumberString(numberStr);
+            if (!uniqueNumbers.add(number)) {
+                throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBER_DUPLICATE);
+            }
+            numbers.add(number);
+        }
+        return numbers;
+    }
 
+    public static int validateNumberString(String numberStr) {
+        int number;
+        try {
+            number = Integer.parseInt(numberStr);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBER_NOT_NUMBER);
+        }
+
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBER_RANGE);
+        }
+        return number;
+    }
 }
