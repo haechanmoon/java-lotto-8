@@ -11,6 +11,7 @@ public class InputView {
                 System.out.println(Messages.ASK_PURCHASE_AMOUNT);
                 String input = Console.readLine();
                 int purchaseAmount = Validator.validatePurchaseAmount(input);
+                System.out.print("\n");
                 return purchaseAmount;
 
             } catch (IllegalArgumentException e) {
@@ -26,6 +27,7 @@ public class InputView {
                 String input = Console.readLine();
 
                 List<Integer> winningNumbers = Validator.validateWinningNumbers(input);
+                System.out.print("\n");
                 return winningNumbers;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -34,14 +36,13 @@ public class InputView {
     }
 
     public int getBonusNumber(List<Integer> winningNumbers) {
-        System.out.print("\n");
         while (true) {
             try {
                 System.out.println(Messages.ASK_BONUS_NUMBER);
                 String input = Console.readLine();
 
                 int bonusNumber = Validator.validateBonusNumber(input, winningNumbers);
-
+                System.out.print("\n");
                 return bonusNumber;
 
             } catch (IllegalArgumentException e) {
@@ -49,4 +50,5 @@ public class InputView {
             }
         }
     }
+
 }
