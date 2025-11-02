@@ -37,6 +37,10 @@ public class LottoGame {
             statistics.put(rank, statistics.get(rank) + 1);
         }
         outputView.printWinningStatistics(statistics);
+
+        long totalPrize = calculateTotalPrize(statistics);
+        double yield = calculateYield(totalPrize, amount);
+        outputView.printTotalYield(yield);
     }
 
     private List<Lotto> generateLottos(int lottoCount) {
@@ -46,5 +50,23 @@ public class LottoGame {
             lottos.add(new Lotto(numbers));
         }
         return lottos;
+    }
+
+    private long calculateTotalPrize(Map<LottoRank, Integer> statistics) {
+        long totalPrize = 0;
+
+        for (LottoRank rank : statistics.keySet()) {
+            int prizeMoney = rank.getWinnings();
+            int count = statistics.get(rank);
+            totalPrize += (long) prizeMoney * count;
+        }
+        return totalPrize;
+    }
+
+    private double calculateYield(long totalPrize, int purchaseAmount) {
+        if (purchaseAmount == 0) {
+            return 0.0;
+        }
+        return (double) totalPrize / purchaseAmount * 100.0;
     }
 }

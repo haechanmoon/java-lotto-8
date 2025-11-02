@@ -13,7 +13,6 @@ public class OutputView {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getSortedNumbers());
         }
-        System.out.print("\n");
     }
 
     public void printWinningStatistics(Map<LottoRank, Integer> statistics) {
@@ -49,5 +48,9 @@ public class OutputView {
                 LottoRank.FIRST.getFormattedPrizeMoney(),
                 statistics.get(LottoRank.FIRST)
         );
+    }
+
+    public void printTotalYield(double yield) {
+        System.out.printf("총 수익률은 %.1f%%입니다.%n", yield);
     }
 }
