@@ -80,7 +80,7 @@ class ValidatorTest {
     @DisplayName("보너스 번호가 당첨 번호와 중복일 때 예외 발생")
     void 보너스_번호가_당첨_번호_와_중복일_때() {
         // given
-        List<Integer> validWinningNumbers = List.of(1, 2, 3, 4, 5, 6); // (TDD 방식대로라면 Validator를 통과시켜야 함)
+        List<Integer> validWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
         String inputBonusNumber = "6";
 
         // when & then
