@@ -39,4 +39,15 @@ class ValidatorTest {
         assertThatThrownBy(() -> Validator.validatePurchaseAmount(purchaseAmount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("당첨 번호에 1~45 범위 밖의 숫자가 있으면 예외 발생")
+    void 당첨_번호에_범위_밖_숫자가_있을_때() {
+        // given
+        String input = "1,2,3,4,5,46";
+
+        // when & then
+        assertThatThrownBy(() -> Validator.validateWinningNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
