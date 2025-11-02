@@ -35,4 +35,18 @@ class LottoTest {
         // then
         assertThat(sorted).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
+
+    @Test
+    @DisplayName("일치하는 번호 개수 세기 테스트")
+    void countMatchingNumbersTest() {
+        // given
+        Lotto myLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 7, 8, 9));
+
+        // when
+        int matchCount = myLotto.countMatchingNumbers(winningLotto);
+
+        // then
+        assertThat(matchCount).isEqualTo(3);
+    }
 }
