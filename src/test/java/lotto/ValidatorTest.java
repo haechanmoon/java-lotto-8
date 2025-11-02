@@ -2,6 +2,7 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -66,11 +67,13 @@ class ValidatorTest {
     @DisplayName("보너스 번호가 범위 밖에 있을 때 예외 발생")
     void 보너스_번호가_범위_밖에_있을_때() {
         // given
-        String input = "46";
+        List<Integer> validWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        String invalidBonusInput = "46";
 
         // when & then
-        assertThatThrownBy(() -> Validator.validateBonusNumber(input, Validator.validateWinningNumbers(input)))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.validateBonusNumber(invalidBonusInput, validWinningNumbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Messages.ERROR_LOTTO_NUMBER_RANGE);
     }
 
     @Test
