@@ -33,5 +33,20 @@ public class InputView {
         }
     }
 
+    public int getBonusNumber(List<Integer> winningNumbers) {
+        System.out.print("\n");
+        while (true) {
+            try {
+                System.out.println(Messages.ASK_BONUS_NUMBER);
+                String input = Console.readLine();
 
+                int bonusNumber = Validator.validateBonusNumber(input, winningNumbers);
+
+                return bonusNumber;
+
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage()); // (5) 실패 시 재시도!
+            }
+        }
+    }
 }

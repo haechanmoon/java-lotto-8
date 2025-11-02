@@ -11,7 +11,7 @@ public class Validator {
         try {
             purchaseAmount = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다.");
+            throw new IllegalArgumentException(Messages.ERROR_NUMBER_NOT_NUMBER);
         }
         if (purchaseAmount <= 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위의 양수를 입력해야합니다.");
@@ -44,12 +44,20 @@ public class Validator {
         try {
             number = Integer.parseInt(numberStr);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBER_NOT_NUMBER);
+            throw new IllegalArgumentException(Messages.ERROR_NUMBER_NOT_NUMBER);
         }
 
         if (number < 1 || number > 45) {
-            throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBER_RANGE);
+            throw new IllegalArgumentException(Messages.ERROR_LOTTO_NUMBER_RANGE);
         }
         return number;
+    }
+
+    public static int validateBonusNumber(String input, List<Integer> winningNumbers) {
+        int bonusNumber = validateNumberString(input);
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(Messages.ERROR_BONUS_NUMBER_DUPLICATE);
+        }
+        return bonusNumber;
     }
 }
