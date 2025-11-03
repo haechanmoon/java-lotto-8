@@ -6,13 +6,17 @@ import java.util.List;
 import java.util.Set;
 
 public class Validator {
-    public static int validatePurchaseAmount(String input) {
-        int purchaseAmount;
+
+    private static int parseInt(String input) {
         try {
-            purchaseAmount = Integer.parseInt(input);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Messages.ERROR_NUMBER_NOT_NUMBER);
         }
+    }
+
+    public static int validatePurchaseAmount(String input) {
+        int purchaseAmount = parseInt(input);
         if (purchaseAmount <= 0) {
             throw new IllegalArgumentException(Messages.ERROR_PURCHASE_AMOUNT_NOT_POSITIVE);
         }
@@ -40,13 +44,7 @@ public class Validator {
     }
 
     public static int validateNumberString(String numberStr) {
-        int number;
-        try {
-            number = Integer.parseInt(numberStr);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Messages.ERROR_NUMBER_NOT_NUMBER);
-        }
-
+        int number = parseInt(numberStr);
         Lotto.validateNumberRange(number);
         return number;
     }
