@@ -1,5 +1,6 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -61,6 +62,19 @@ class ValidatorTest {
         // when & then
         assertThatThrownBy(() -> Validator.validateWinningNumbers(input))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("당첨 번호에 공백이 있어도 숫자로 잘 변환해야 한다")
+    void 당첨_번호에_공백이_있어도_통과() {
+        // given
+        String inputWithSpaces = " 1, 2, 3, 4, 5, 6";
+
+        // when
+        List<Integer> numbers = Validator.validateWinningNumbers(inputWithSpaces);
+
+        // then
+        assertThat(numbers).containsExactly(1, 2, 3, 4, 5, 6);
     }
 
     @Test

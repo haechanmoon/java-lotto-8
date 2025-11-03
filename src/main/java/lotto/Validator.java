@@ -9,7 +9,7 @@ public class Validator {
 
     private static int parseInt(String input) {
         try {
-            return Integer.parseInt(input);
+            return Integer.parseInt(input.trim());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Messages.ERROR_NUMBER_NOT_NUMBER);
         }
