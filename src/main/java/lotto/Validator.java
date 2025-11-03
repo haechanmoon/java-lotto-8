@@ -14,10 +14,10 @@ public class Validator {
             throw new IllegalArgumentException(Messages.ERROR_NUMBER_NOT_NUMBER);
         }
         if (purchaseAmount <= 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위의 양수를 입력해야합니다.");
+            throw new IllegalArgumentException(Messages.ERROR_PURCHASE_AMOUNT_NOT_POSITIVE);
         }
         if ((purchaseAmount % 1000) != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해야합니다");
+            throw new IllegalArgumentException(Messages.ERROR_PURCHASE_AMOUNT_NOT_IN_UNITS);
         }
         return purchaseAmount;
     }

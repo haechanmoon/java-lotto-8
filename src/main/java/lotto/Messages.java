@@ -7,6 +7,8 @@ public class Messages {
 
     static final String VIEW_PURCHASE_TOTAL_LOTTO = "개를 구매했습니다.";
 
+    static final String ERROR_PURCHASE_AMOUNT_NOT_POSITIVE = "[ERROR] 1000원 단위의 양수를 입력해야합니다.";
+    static final String ERROR_PURCHASE_AMOUNT_NOT_IN_UNITS = "[ERROR] 1000원 단위로 입력해야합니다";
     static final String ERROR_LOTTO_NUMBER_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     static final String ERROR_LOTTO_NUMBER_DUPLICATE = "[ERROR] 로또 번호에 중복된 숫자가 있습니다.";
     static final String ERROR_LOTTO_NUMBER_COUNT = "[ERROR] 당첨 번호는 6개여야 합니다.";
