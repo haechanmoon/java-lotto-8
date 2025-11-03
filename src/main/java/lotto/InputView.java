@@ -8,7 +8,7 @@ public class InputView {
     public int getPurchaseAmount() {
         while (true) {
             try {
-                System.out.println(Messages.ASK_PURCHASE_AMOUNT);
+                System.out.println("\n" + Messages.ASK_PURCHASE_AMOUNT);
                 String input = Console.readLine();
                 int purchaseAmount = Validator.validatePurchaseAmount(input);
                 return purchaseAmount;
