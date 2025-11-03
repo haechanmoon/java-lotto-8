@@ -3,97 +3,41 @@ package lotto;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class LottoRankTest {
 
-    @Test
-    @DisplayName("6개 일치 시 1등을 반환한다")
-    void 여섯개_일치_시_1등을_반환() {
-        // given
-        int matchCount = 6;
-        boolean bonusMatch = false;
-
-        // when
+    @DisplayName("일치 개수와 보너스 여부에 따라 올바른 등수를 반환한다")
+    @ParameterizedTest
+    @CsvSource({
+            "6, false, FIRST",
+            "5, true,  SECOND",
+            "5, false, THIRD",
+            "4, false, FOURTH",
+            "3, false, FIFTH",
+            "2, false, MISS",
+            "1, true,  MISS"
+    })
+    void 등수_판별_테스트(int matchCount, boolean bonusMatch, LottoRank expectedRank) {
+        // given & when
         LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
 
         // then
-        assertThat(rank).isEqualTo(LottoRank.FIRST);
-        assertThat(rank.getWinnings()).isEqualTo(2_000_000_000);
+        assertThat(rank).isEqualTo(expectedRank);
     }
 
-    @Test
-    @DisplayName("5개 일치 + 보너스 일치 시 2등을 반환한다")
-    void 다섯개_일치와_보너스_일치_시_2등을_반환() {
-        // given
-        int matchCount = 5;
-        boolean bonusMatch = true;
-
-        // when
+    @DisplayName("일치 개수와 보너스 여부에 따라 올바른 상금을 반환한다")
+    @ParameterizedTest
+    @CsvSource({
+            "6, false, 2000000000",
+            "5, true,  30000000",
+            "5, false, 1500000",
+            "4, false, 50000",
+            "3, false, 5000"
+    })
+    void 상금_테스트(int matchCount, boolean bonusMatch, int expectedWinnings) {
         LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
-
-        // then
-        assertThat(rank).isEqualTo(LottoRank.SECOND);
-        assertThat(rank.getWinnings()).isEqualTo(30_000_000);
-    }
-
-    @Test
-    @DisplayName("5개 일치 + 보너스 불일치 시 3등을 반환한다")
-    void 다섯개_일치와_보너스_불일치_시_3등을_반환() {
-        // given
-        int matchCount = 5;
-        boolean bonusMatch = false;
-
-        // when
-        LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
-
-        // then
-        assertThat(rank).isEqualTo(LottoRank.THIRD);
-        assertThat(rank.getWinnings()).isEqualTo(1_500_000);
-    }
-
-    @Test
-    @DisplayName("4개 일치 시 4등을 반환한다")
-    void 네개_일치_시_4등을_반환() {
-        // given
-        int matchCount = 4;
-        boolean bonusMatch = false;
-
-        // when
-        LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
-
-        // then
-        assertThat(rank).isEqualTo(LottoRank.FOURTH);
-        assertThat(rank.getWinnings()).isEqualTo(50_000);
-    }
-
-    @Test
-    @DisplayName("3개 일치 시 5등을 반환한다")
-    void 세개_일치_시_5등을_반환() {
-        // given
-        int matchCount = 3;
-        boolean bonusMatch = false;
-
-        // when
-        LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
-
-        // then
-        assertThat(rank).isEqualTo(LottoRank.FIFTH);
-        assertThat(rank.getWinnings()).isEqualTo(5_000);
-    }
-
-    @Test
-    @DisplayName("3개 미만 일치 시 꽝(MISS)을 반환한다")
-    void 세개_미만_일치_시_꽝_반환() {
-        // given
-        int matchCount = 2;
-        boolean bonusMatch = false;
-
-        // when
-        LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
-
-        // then
-        assertThat(rank).isEqualTo(LottoRank.MISS);
-        assertThat(rank.getWinnings()).isEqualTo(0); // 상금은 0원
+        assertThat(rank.getWinnings()).isEqualTo(expectedWinnings);
     }
 }
