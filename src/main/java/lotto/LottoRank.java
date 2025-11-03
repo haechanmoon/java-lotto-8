@@ -1,6 +1,7 @@
 package lotto;
 
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.List;
 
 public enum LottoRank {
@@ -42,21 +43,16 @@ public enum LottoRank {
     }
 
     public static LottoRank valueOf(int matchCount, boolean bonusMatch) {
-        if (matchCount == 6) {
-            return FIRST;
-        }
-        if (matchCount == 5 && bonusMatch) {
-            return SECOND;
-        }
         if (matchCount == 5) {
+            if (bonusMatch) {
+                return SECOND;
+            }
             return THIRD;
         }
-        if (matchCount == 4) {
-            return FOURTH;
-        }
-        if (matchCount == 3) {
-            return FIFTH;
-        }
-        return MISS;
+
+        return Arrays.stream(values())
+                .filter(rank -> rank.matchCount == matchCount)
+                .findFirst()
+                .orElse(MISS);
     }
 }
