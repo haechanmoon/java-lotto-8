@@ -24,7 +24,7 @@ public class Validator {
 
     public static List<Integer> validateWinningNumbers(String input) {
         String[] numberStrings = input.split(",");
-        if (numberStrings.length != 6) {
+        if (numberStrings.length != Lotto.LOTTO_SIZE) {
             throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBER_COUNT);
         }
         List<Integer> numbers = new ArrayList<>();
@@ -47,9 +47,7 @@ public class Validator {
             throw new IllegalArgumentException(Messages.ERROR_NUMBER_NOT_NUMBER);
         }
 
-        if (number < 1 || number > 45) {
-            throw new IllegalArgumentException(Messages.ERROR_LOTTO_NUMBER_RANGE);
-        }
+        Lotto.validateNumberRange(number);
         return number;
     }
 
