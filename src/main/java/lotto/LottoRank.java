@@ -1,6 +1,7 @@
 package lotto;
 
 import java.text.NumberFormat;
+import java.util.List;
 
 public enum LottoRank {
     FIRST(6, 2_000_000_000, "6개 일치"),
@@ -9,6 +10,10 @@ public enum LottoRank {
     FOURTH(4, 50_000, "4개 일치"),
     FIFTH(3, 5_000, "3개 일치"),
     MISS(0, 0, "꽝");
+
+    private static final List<LottoRank> PRINTABLE_RANKS = List.of(
+            FIFTH, FOURTH, THIRD, SECOND, FIRST
+    );
 
     private final int matchCount;
     private final int winnings;
@@ -30,6 +35,10 @@ public enum LottoRank {
 
     public String getFormattedPrizeMoney() {
         return NumberFormat.getInstance().format(winnings);
+    }
+
+    public static List<LottoRank> getPrintableRanks() {
+        return PRINTABLE_RANKS;
     }
 
     public static LottoRank valueOf(int matchCount, boolean bonusMatch) {

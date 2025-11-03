@@ -18,36 +18,14 @@ public class OutputView {
     public void printWinningStatistics(Map<LottoRank, Integer> statistics) {
         System.out.println("\n당첨 통계");
         System.out.println("---");
-        System.out.printf(
-                "%s (%s원) - %d개%n",
-                LottoRank.FIFTH.getDescription(),
-                LottoRank.FIFTH.getFormattedPrizeMoney(),
-                statistics.get(LottoRank.FIFTH)
-        );
-        System.out.printf(
-                "%s (%s원) - %d개%n",
-                LottoRank.FOURTH.getDescription(),
-                LottoRank.FOURTH.getFormattedPrizeMoney(),
-                statistics.get(LottoRank.FOURTH)
-        );
-        System.out.printf(
-                "%s (%s원) - %d개%n",
-                LottoRank.THIRD.getDescription(),
-                LottoRank.THIRD.getFormattedPrizeMoney(),
-                statistics.get(LottoRank.THIRD)
-        );
-        System.out.printf(
-                "%s (%s원) - %d개%n",
-                LottoRank.SECOND.getDescription(),
-                LottoRank.SECOND.getFormattedPrizeMoney(),
-                statistics.get(LottoRank.SECOND)
-        );
-        System.out.printf(
-                "%s (%s원) - %d개%n",
-                LottoRank.FIRST.getDescription(),
-                LottoRank.FIRST.getFormattedPrizeMoney(),
-                statistics.get(LottoRank.FIRST)
-        );
+        for (LottoRank rank : LottoRank.getPrintableRanks()) {
+            System.out.printf(
+                    "%s (%s원) - %d개%n",
+                    rank.getDescription(),
+                    rank.getFormattedPrizeMoney(),
+                    statistics.get(rank)
+            );
+        }
     }
 
     public void printTotalYield(double yield) {
