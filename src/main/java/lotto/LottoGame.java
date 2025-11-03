@@ -17,27 +17,43 @@ public class LottoGame {
 
     public void start() {
         int amount = inputView.getPurchaseAmount();
+        List<Lotto> purchasedLottos = createAndShowLottos(amount);
+
+        Lotto winningLotto = new Lotto(inputView.getWinningNumbers());
+        int bonusNumber = inputView.getBonusNumber(winningLotto.getSortedNumbers());
+
+        Map<LottoRank, Integer> statistics = calculateStatistics(purchasedLottos, winningLotto, bonusNumber);
+
+        printGameResult(statistics, amount);
+    }
+
+    private List<Lotto> createAndShowLottos(int amount) {
         int lottoCount = amount / 1000;
         outputView.printLottoCount(lottoCount);
         List<Lotto> purchasedLottos = generateLottos(lottoCount);
         outputView.printLottos(purchasedLottos);
-        List<Integer> winningNumbers = inputView.getWinningNumbers();
-        Lotto winningLotto = new Lotto(winningNumbers);
-        int bonusNumber = inputView.getBonusNumber(winningNumbers);
+        return purchasedLottos;
+    }
+
+    private Map<LottoRank, Integer> calculateStatistics(
+            List<Lotto> purchasedLottos, Lotto winningLotto, int bonusNumber
+    ) {
         Map<LottoRank, Integer> statistics = new EnumMap<>(LottoRank.class);
         for (LottoRank rank : LottoRank.values()) {
             statistics.put(rank, 0);
         }
+
         for (Lotto lotto : purchasedLottos) {
             int matchCount = lotto.countMatchingNumbers(winningLotto);
             boolean bonusMatch = lotto.containsNumber(bonusNumber);
-
             LottoRank rank = LottoRank.valueOf(matchCount, bonusMatch);
-
             statistics.put(rank, statistics.get(rank) + 1);
         }
-        outputView.printWinningStatistics(statistics);
+        return statistics;
+    }
 
+    private void printGameResult(Map<LottoRank, Integer> statistics, int amount) {
+        outputView.printWinningStatistics(statistics);
         long totalPrize = calculateTotalPrize(statistics);
         double yield = calculateYield(totalPrize, amount);
         outputView.printTotalYield(yield);
