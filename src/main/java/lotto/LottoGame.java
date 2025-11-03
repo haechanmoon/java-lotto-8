@@ -28,7 +28,7 @@ public class LottoGame {
     }
 
     private List<Lotto> createAndShowLottos(int amount) {
-        int lottoCount = amount / 1000;
+        int lottoCount = amount / Lotto.LOTTO_PRICE_UNIT;
         outputView.printLottoCount(lottoCount);
         List<Lotto> purchasedLottos = generateLottos(lottoCount);
         outputView.printLottos(purchasedLottos);

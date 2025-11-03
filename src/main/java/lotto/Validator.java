@@ -21,7 +21,8 @@ public class Validator {
             throw new IllegalArgumentException(Messages.ERROR_PURCHASE_AMOUNT_NOT_POSITIVE);
         }
         if ((purchaseAmount % 1000) != 0) {
-            throw new IllegalArgumentException(Messages.ERROR_PURCHASE_AMOUNT_NOT_IN_UNITS);
+            throw new IllegalArgumentException(
+                    String.format(Messages.ERROR_PURCHASE_AMOUNT_NOT_IN_UNITS, Lotto.LOTTO_PRICE_UNIT));
         }
         return purchaseAmount;
     }
