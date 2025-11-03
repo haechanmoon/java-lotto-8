@@ -22,7 +22,7 @@ public class OutputView {
             System.out.printf(
                     "%s (%s원) - %d개%n",
                     rank.getDescription(),
-                    rank.getFormattedPrizeMoney(),
+                    rank.getFormattedWinnings(),
                     statistics.get(rank)
             );
         }

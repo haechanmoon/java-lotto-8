@@ -20,9 +20,9 @@ public enum LottoRank {
     private final int winnings;
     private final String description;
 
-    LottoRank(int matchCount, int prizeMoney, String description) {
+    LottoRank(int matchCount, int winnings, String description) {
         this.matchCount = matchCount;
-        this.winnings = prizeMoney;
+        this.winnings = winnings;
         this.description = description;
     }
 
@@ -34,7 +34,7 @@ public enum LottoRank {
         return description;
     }
 
-    public String getFormattedPrizeMoney() {
+    public String getFormattedWinnings() {
         return NumberFormat.getInstance().format(winnings);
     }
 
