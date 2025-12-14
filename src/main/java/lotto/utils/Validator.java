@@ -7,4 +7,10 @@ public class Validator {
         }
     }
 
+    public static void validateInputEmpty(String input) {
+        if (input.isBlank()) {
+            throw new IllegalArgumentException(Messages.ERROR_IS_EMPTY);
+        }
+    }
+
 }
