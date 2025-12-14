@@ -13,4 +13,9 @@ public class Validator {
         }
     }
 
+    public static void validateMoneyNotThousandUnit(String input) {
+        if ((Integer.parseInt(input) % 1000) != 0) {
+            throw new IllegalArgumentException(Messages.ERROR_IS_NOT_THOUSAND_UNIT);
+        }
+    }
 }
