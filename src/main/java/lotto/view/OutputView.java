@@ -13,4 +13,7 @@ public class OutputView {
     }
 
 
+    public static void printInputNumber() {
+        System.out.println(Messages.PRINT_WINNING_NUMBER);
+    }
 }
