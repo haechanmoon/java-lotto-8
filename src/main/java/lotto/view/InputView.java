@@ -7,10 +7,13 @@ public class InputView {
 
     public static String getInputMoney() {
         String input = Console.readLine();
-        Validator.validateInputEmpty(input);
-        Validator.validateMoneyNotDigit(input);
+        Validator.validateIsEmpty(input);
+        Validator.validateNotDigit(input);
         Validator.validateMoneyNotThousandUnit(input);
         return input;
+    }
 
+    public static String getInputWinningNumbers() {
+        return Console.readLine();
     }
 }

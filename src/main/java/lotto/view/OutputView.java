@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 import lotto.utils.Messages;
 
 public class OutputView {
@@ -15,5 +17,11 @@ public class OutputView {
 
     public static void printInputNumber() {
         System.out.println(Messages.PRINT_WINNING_NUMBER);
+    }
+
+    public static void printLottos(Lottos lottos) {
+        for (Lotto lotto : lottos.getLottos()) {
+            System.out.println(lotto.toString());
+        }
     }
 }
