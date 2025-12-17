@@ -10,7 +10,7 @@ import lotto.utils.Validator;
 
 public class LottoService {
 
-    public static int lottoCount(String input) {
+    public int lottoCount(String input) {
         return Integer.parseInt(input) / 1000;
     }
 
@@ -36,6 +36,6 @@ public class LottoService {
         }
         return new WinningNumbers(winningIntNumbers);
     }
-    
+
 
 }

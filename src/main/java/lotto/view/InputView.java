@@ -13,7 +13,14 @@ public class InputView {
         return input;
     }
 
-    public static String getInputWinningNumbers() {
+    public static String getWinningNumbers() {
         return Console.readLine();
+    }
+
+    public static int getBonusNumber() {
+        String input = Console.readLine();
+        Validator.validateIsEmpty(input);
+        Validator.validateNotDigit(input);
+        return Integer.parseInt(input);
     }
 }

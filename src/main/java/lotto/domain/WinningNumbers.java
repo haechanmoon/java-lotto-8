@@ -14,6 +14,7 @@ public class WinningNumbers {
         validateDuplicated();
     }
 
+
     private void validateSize() {
         if (winningNumbers.size() != 6) {
             throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBERS_OVER_COUNT);
@@ -39,5 +40,5 @@ public class WinningNumbers {
         return winningNumbers.contains(number);
     }
 
-    
+
 }
