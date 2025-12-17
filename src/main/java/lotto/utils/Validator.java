@@ -1,5 +1,7 @@
 package lotto.utils;
 
+import lotto.domain.WinningNumbers;
+
 public class Validator {
     public static void validateNotDigit(String input) {
         if (!input.matches("\\d+")) {
@@ -19,5 +21,21 @@ public class Validator {
         }
     }
 
+    private static void validateBonusNumberRange(int num) {
+        if (num < 1 || num > 45) {
+            throw new IllegalArgumentException(Messages.ERROR_WINNING_NUBER_RANGE);
+        }
+    }
+
+    private static void validateBonusNumberDuplicated(WinningNumbers winningNumbers, int num) {
+        if (winningNumbers.contains(num)) {
+            throw new IllegalArgumentException(Messages.ERROR_BONUS_NUMBER_DUPLICATED);
+        }
+    }
+
+    public static void validateBonusNumber(WinningNumbers winningNumbers, int num) {
+        validateBonusNumberDuplicated(winningNumbers, num);
+        validateBonusNumberRange(num);
+    }
 
 }

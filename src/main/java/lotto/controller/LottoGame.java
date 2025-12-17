@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.Lottos;
 import lotto.domain.WinningNumbers;
 import lotto.service.LottoService;
+import lotto.utils.Validator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -23,7 +24,8 @@ public class LottoGame {
 
         OutputView.printBonusNumber();
         int bonusNumber = InputView.getBonusNumber();
+        Validator.validateBonusNumber(winNum, bonusNumber);
 
-
+        
     }
 }
