@@ -16,12 +16,13 @@ public class Validator {
     }
 
     public static void validateMoneyNotThousandUnit(String input) {
-        if ((Integer.parseInt(input) % 1000) != 0) {
+        if ((Integer.parseInt(input) % 1000) != 0 || Integer.parseInt(input) == 0) {
             throw new IllegalArgumentException(Messages.ERROR_IS_NOT_THOUSAND_UNIT);
         }
     }
 
     public static void validateBonusNumberRange(int num) {
+        validateNotDigit(String.valueOf(num));
         if (num < 1 || num > 45) {
             throw new IllegalArgumentException(Messages.ERROR_WINNING_NUBER_RANGE);
         }
@@ -34,8 +35,8 @@ public class Validator {
     }
 
     public static void validateBonusNumber(WinningNumbers winningNumbers, int num) {
-        validateBonusNumberDuplicated(winningNumbers, num);
         validateBonusNumberRange(num);
+        validateBonusNumberDuplicated(winningNumbers, num);
     }
 
 }

@@ -30,7 +30,7 @@ class ValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"900", "1500", "10o0"})
+    @ValueSource(strings = {"900", "1500", "3"})
     @DisplayName("구입금액이 1000단위가 아닌 숫자일 때 예외처리 확인")
     void 구입금액이_1000단위가_아닌_숫자일_때(String input) {
         assertThatThrownBy(() -> Validator.validateMoneyNotThousandUnit(input))
@@ -39,7 +39,7 @@ class ValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"0", "46", "1f"})
+    @ValueSource(strings = {"0", "46", "55"})
     @DisplayName("보너스번호 범위가 1-45를 벗어났을 때 예외처리 확인")
     void 보너스번호_범위를_벗어낫을_때(int num) {
         assertThatThrownBy(() -> Validator.validateBonusNumberRange(num))
@@ -58,6 +58,5 @@ class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Messages.ERROR_BONUS_NUMBER_DUPLICATED);
     }
-
 
 }
