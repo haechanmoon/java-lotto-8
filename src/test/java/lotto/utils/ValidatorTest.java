@@ -2,6 +2,8 @@ package lotto.utils;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
+import lotto.domain.WinningNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -43,6 +45,18 @@ class ValidatorTest {
         assertThatThrownBy(() -> Validator.validateBonusNumberRange(num))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Messages.ERROR_WINNING_NUBER_RANGE);
+    }
+
+    @Test
+    @DisplayName("보너스번호가 당첨번호랑 중복됐을 때 예외처리 확인")
+    void 보너스번호가_당첨번호랑_중복됐을_때() {
+        List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
+        WinningNumbers winNum = new WinningNumbers(winningNumber);
+        int bonusNumber = 4;
+
+        assertThatThrownBy(() -> Validator.validateBonusNumberDuplicated(winNum, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Messages.ERROR_BONUS_NUMBER_DUPLICATED);
     }
 
 
