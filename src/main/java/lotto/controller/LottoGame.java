@@ -1,6 +1,8 @@
 package lotto.controller;
 
+import java.util.Map;
 import lotto.domain.Lottos;
+import lotto.domain.Rank;
 import lotto.domain.WinningNumbers;
 import lotto.service.LottoService;
 import lotto.utils.Validator;
@@ -26,6 +28,9 @@ public class LottoGame {
         int bonusNumber = InputView.getBonusNumber();
         Validator.validateBonusNumber(winNum, bonusNumber);
 
-        
+        OutputView.printWinningResult();
+        Map<Rank, Integer> result = service.calculateResult(lottos, winNum, bonusNumber);
+        OutputView.printStatistics(result);
+        OutputView.printReturnRate(input, result);
     }
 }
