@@ -65,4 +65,12 @@ public class LottoService {
         }
         return count;
     }
+
+    public double calculateReturnRate(Map<Rank, Integer> result, int inputMoney) {
+        double totalPrize = 0;
+        for (Rank rank : result.keySet()) {
+            totalPrize += rank.getWinningMoney() * result.get(rank);
+        }
+        return (totalPrize / inputMoney) * 100;
+    }
 }

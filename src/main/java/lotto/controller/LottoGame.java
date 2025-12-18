@@ -31,6 +31,7 @@ public class LottoGame {
         OutputView.printWinningResult();
         Map<Rank, Integer> result = service.calculateResult(lottos, winNum, bonusNumber);
         OutputView.printStatistics(result);
-        OutputView.printReturnRate(input, result);
+        double returnRate = service.calculateReturnRate(result, Integer.parseInt(input));
+        OutputView.printReturnRate(returnRate);
     }
 }

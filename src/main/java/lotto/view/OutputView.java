@@ -50,7 +50,7 @@ public class OutputView {
         }
     }
 
-    public static void printReturnRate(String input, Map<Rank, Integer> result) {
-        System.out.print()
+    public static void printReturnRate(double returnRate) {
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", returnRate);
     }
 }
