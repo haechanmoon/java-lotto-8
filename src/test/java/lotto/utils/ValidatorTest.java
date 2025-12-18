@@ -27,5 +27,14 @@ class ValidatorTest {
                 .hasMessageContaining(Messages.ERROR_NOT_DIGIT);
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"900", "1500", "10o0"})
+    @DisplayName("구입금액이 1000단위가 아닌 숫자일 때 예외처리 확인")
+    void 구입금액이_1000단위가_아닌_숫자일_때(String input) {
+        assertThatThrownBy(() -> Validator.validateMoneyNotThousandUnit(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Messages.ERROR_IS_NOT_THOUSAND_UNIT);
+    }
 
+    
 }
