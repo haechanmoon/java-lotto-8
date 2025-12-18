@@ -21,13 +21,13 @@ public class Validator {
         }
     }
 
-    private static void validateBonusNumberRange(int num) {
+    public static void validateBonusNumberRange(int num) {
         if (num < 1 || num > 45) {
             throw new IllegalArgumentException(Messages.ERROR_WINNING_NUBER_RANGE);
         }
     }
 
-    private static void validateBonusNumberDuplicated(WinningNumbers winningNumbers, int num) {
+    public static void validateBonusNumberDuplicated(WinningNumbers winningNumbers, int num) {
         if (winningNumbers.contains(num)) {
             throw new IllegalArgumentException(Messages.ERROR_BONUS_NUMBER_DUPLICATED);
         }

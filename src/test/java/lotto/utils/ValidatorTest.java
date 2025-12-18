@@ -36,5 +36,14 @@ class ValidatorTest {
                 .hasMessageContaining(Messages.ERROR_IS_NOT_THOUSAND_UNIT);
     }
 
-    
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "46", "1f"})
+    @DisplayName("보너스번호 범위가 1-45를 벗어났을 때 예외처리 확인")
+    void 보너스번호_범위를_벗어낫을_때(int num) {
+        assertThatThrownBy(() -> Validator.validateBonusNumberRange(num))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Messages.ERROR_WINNING_NUBER_RANGE);
+    }
+
+
 }
