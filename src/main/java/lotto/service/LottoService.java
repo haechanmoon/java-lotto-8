@@ -73,4 +73,5 @@ public class LottoService {
         }
         return (totalPrize / inputMoney) * 100;
     }
+
 }
