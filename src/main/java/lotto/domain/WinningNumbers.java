@@ -24,7 +24,7 @@ public class WinningNumbers {
     private void validateRange() {
         for (Integer num : winningNumbers) {
             if (num < 1 || num > 45) {
-                throw new IllegalArgumentException(Messages.ERROR_WINNING_NUBER_RANGE);
+                throw new IllegalArgumentException(Messages.ERROR_NUBER_RANGE);
             }
         }
     }

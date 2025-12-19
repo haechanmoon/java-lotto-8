@@ -42,9 +42,9 @@ class ValidatorTest {
     @ValueSource(strings = {"0", "46", "55"})
     @DisplayName("보너스번호 범위가 1-45를 벗어났을 때 예외처리 확인")
     void 보너스번호_범위를_벗어낫을_때(int num) {
-        assertThatThrownBy(() -> Validator.validateBonusNumberRange(num))
+        assertThatThrownBy(() -> Validator.validateNumberRange(num))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(Messages.ERROR_WINNING_NUBER_RANGE);
+                .hasMessageContaining(Messages.ERROR_NUBER_RANGE);
     }
 
     @Test

@@ -21,10 +21,10 @@ public class Validator {
         }
     }
 
-    public static void validateBonusNumberRange(int num) {
+    public static void validateNumberRange(int num) {
         validateNotDigit(String.valueOf(num));
         if (num < 1 || num > 45) {
-            throw new IllegalArgumentException(Messages.ERROR_WINNING_NUBER_RANGE);
+            throw new IllegalArgumentException(Messages.ERROR_NUBER_RANGE);
         }
     }
 
@@ -35,7 +35,7 @@ public class Validator {
     }
 
     public static void validateBonusNumber(WinningNumbers winningNumbers, int num) {
-        validateBonusNumberRange(num);
+        validateNumberRange(num);
         validateBonusNumberDuplicated(winningNumbers, num);
     }
 

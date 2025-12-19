@@ -23,5 +23,13 @@ class LottoTest {
                 .hasMessageContaining(Messages.ERROR_NUMBER_DUPLICATED);
     }
 
+    @DisplayName("당첨번호가 1-45의 범위를 벗어낫을 때 예외처리 확인")
+    @Test
+    void 당첨번호가_1부터45의_범위를_벗어낫을_때_예외처리_확인() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 47)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Messages.ERROR_NUBER_RANGE);
+    }
+
 
 }
