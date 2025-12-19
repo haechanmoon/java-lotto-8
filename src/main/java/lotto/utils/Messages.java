@@ -16,4 +16,5 @@ public enum Messages {
     public static final String ERROR_BONUS_NUMBER_DUPLICATED = "[ERROR] 보너스 번호는 중복될 수 없습니다.";
     public static final String PRINT_WINNING_RESULT = "당첨 통계";
     public static final String PRINT_BARS = "---";
+    public static final String ERROR_NUMBER_DUPLICATED = "[ERROR] 로또 번호는 중복될 수 없습니다.";
 }
