@@ -19,7 +19,9 @@ public class Validator {
         if ((money % 1000) != 0) {
             throw new IllegalArgumentException(Messages.ERROR_IS_NOT_UNIT);
         }
-
+        if (money == 0) {
+            throw new IllegalArgumentException(Messages.ERROR_IS_ZERO);
+        }
     }
 
 }
