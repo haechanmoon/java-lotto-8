@@ -2,6 +2,7 @@ package lotto.utils;
 
 import java.util.HashSet;
 import java.util.List;
+import lotto.domain.WinningNumbers;
 
 public class Validator {
 
@@ -40,4 +41,10 @@ public class Validator {
         }
     }
 
+    public static void validateBonus(String input, WinningNumbers winning) {
+        int bonus = Integer.parseInt(input);
+        if (winning.isContainBonus(bonus)) {
+            throw new IllegalArgumentException(Messages.ERROR_WIN_BONUS_DUPLICATED);
+        }
+    }
 }

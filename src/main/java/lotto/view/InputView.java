@@ -20,8 +20,10 @@ public class InputView {
         return new ArrayList<>(Integer.parseInt(Arrays.toString(input.split("[,]"))));
     }
 
-    public static int bonusInput() {
+    public static int bonusInput(List<Integer> winningNumbers) {
         String input = Console.readLine();
-        validator
+        Validator.validateIsEmpty(input);
+        Validator.validateIsNotDigit(input);
+        Validator.validateBonus(input, winningNumbers);
     }
 }
