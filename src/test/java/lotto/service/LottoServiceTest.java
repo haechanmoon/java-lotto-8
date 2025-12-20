@@ -66,4 +66,18 @@ class LottoServiceTest {
         //then
         assertThat(returnRate).isEqualTo(0.0);
     }
+
+    @Test
+    @DisplayName("돈 넣은만큼 로또 생성되는지 확인")
+    void 로또수_확인() {
+        //given
+        LottoService service = new LottoService();
+        String input = "8000";
+
+        //when
+        Lottos lottos = service.purchaseLotto(input);
+
+        //then
+        assertThat(lottos.getLottosSize()).isEqualTo(8);
+    }
 }

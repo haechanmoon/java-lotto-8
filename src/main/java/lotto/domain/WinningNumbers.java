@@ -11,25 +11,24 @@ public class WinningNumbers {
         this.winningNumbers = winningNumbers;
         validateSize();
         validateRange();
-        validateDuplicated();
+        validateDuplicate();
     }
 
-
     private void validateSize() {
-        if (winningNumbers.size() != 6) {
+        if (winningNumbers.size() != Lotto.SIZE) {
             throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBERS_OVER_COUNT);
         }
     }
 
     private void validateRange() {
         for (Integer num : winningNumbers) {
-            if (num < 1 || num > 45) {
+            if (num < Lotto.MIN_NUMBER || num > Lotto.MAX_NUMBER) {
                 throw new IllegalArgumentException(Messages.ERROR_NUBER_RANGE);
             }
         }
     }
 
-    private void validateDuplicated() {
+    private void validateDuplicate() {
         HashSet<Integer> numbers = new HashSet<>(winningNumbers);
         if (numbers.size() != winningNumbers.size()) {
             throw new IllegalArgumentException(Messages.ERROR_WINNING_NUMBER_DUPLICATED);
@@ -39,6 +38,5 @@ public class WinningNumbers {
     public boolean contains(int number) {
         return winningNumbers.contains(number);
     }
-
 
 }

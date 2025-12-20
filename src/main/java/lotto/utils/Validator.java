@@ -1,8 +1,11 @@
 package lotto.utils;
 
+import lotto.domain.Lotto;
 import lotto.domain.WinningNumbers;
 
 public class Validator {
+    private static final int PRICE_UNIT = 1000;
+
     public static void validateNotDigit(String input) {
         if (!input.matches("\\d+")) {
             throw new IllegalArgumentException(Messages.ERROR_NOT_DIGIT);
@@ -16,14 +19,14 @@ public class Validator {
     }
 
     public static void validateMoneyNotThousandUnit(String input) {
-        if ((Integer.parseInt(input) % 1000) != 0 || Integer.parseInt(input) == 0) {
+        if ((Integer.parseInt(input) % PRICE_UNIT) != 0 || Integer.parseInt(input) == 0) {
             throw new IllegalArgumentException(Messages.ERROR_IS_NOT_THOUSAND_UNIT);
         }
     }
 
     public static void validateNumberRange(int num) {
         validateNotDigit(String.valueOf(num));
-        if (num < 1 || num > 45) {
+        if (num < Lotto.MIN_NUMBER || num > Lotto.MAX_NUMBER) {
             throw new IllegalArgumentException(Messages.ERROR_NUBER_RANGE);
         }
     }

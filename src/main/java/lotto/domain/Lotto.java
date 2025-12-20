@@ -6,6 +6,10 @@ import lotto.utils.Messages;
 import lotto.utils.Validator;
 
 public class Lotto {
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 45;
+    public static final int SIZE = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -16,7 +20,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != SIZE) {
             throw new IllegalArgumentException(Messages.ERROR_NUMBER_SIZE_OVER);
         }
     }

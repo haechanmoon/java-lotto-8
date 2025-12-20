@@ -12,22 +12,22 @@ import lotto.domain.WinningNumbers;
 import lotto.utils.Validator;
 
 public class LottoService {
+    private static final int LOTTO_PRICE = 1000;
 
     public int lottoCount(String input) {
-        return Integer.parseInt(input) / 1000;
+        return Integer.parseInt(input) / LOTTO_PRICE;
     }
 
     public Lottos purchaseLotto(String input) {
         int count = lottoCount(input);
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            List<Integer> random = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> random = Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.SIZE);
             Lotto lotto = new Lotto(random);
             lottos.add(lotto);
         }
         return new Lottos(lottos);
     }
-
 
     public WinningNumbers splitWinningNumbers(String numbers) {
         String[] winningNumbers = numbers.split("[,]");
@@ -40,8 +40,7 @@ public class LottoService {
         return new WinningNumbers(winningIntNumbers);
     }
 
-    public Map<Rank, Integer> calculateResult(Lottos lottos
-            , WinningNumbers winningNumbers, int bonusNumber) {
+    public Map<Rank, Integer> calculateResult(Lottos lottos, WinningNumbers winningNumbers, int bonusNumber) {
         Map<Rank, Integer> result = new EnumMap<>(Rank.class);
         for (Rank rank : Rank.values()) {
             result.put(rank, 0);
