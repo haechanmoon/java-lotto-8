@@ -7,4 +7,10 @@ public class Validator {
             throw new IllegalArgumentException(Messages.ERROR_IS_EMPTY);
         }
     }
+
+    public static void validateIsNotDigit(String input) {
+        if(input.matches("\\d+")){
+            throw new IllegalArgumentException(Messages.ERROR_IS_NOT_DIGIT)
+        }
+    }
 }
