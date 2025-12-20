@@ -14,4 +14,8 @@ public class OutputView {
             System.out.println(lotto.toString());
         }
     }
+
+    public static void requestWinningNumbers() {
+        System.out.println(Messages.REQUEST_WINNING_NUMBERS_INPUT);
+    }
 }

@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import java.util.List;
 import lotto.domain.Lottos;
 import lotto.service.LottoService;
 import lotto.view.InputView;
@@ -15,6 +16,9 @@ public class LottoGame {
         Lottos lottos = service.generateLottos(lottoCount);
         OutputView.printAllLottos(lottos);
 
-        
+        OutputView.requestWinningNumbers();
+        List<Integer> winningNumbers = InputView.winningNumbersInput();
+        int bonus = InputView.bonusInput();
+
     }
 }
