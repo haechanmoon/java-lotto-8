@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Lottos;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -11,5 +12,9 @@ public class LottoGame {
 
         LottoService service = new LottoService();
         int lottoCount = service.lottoCount(money);
+        Lottos lottos = service.generateLottos(lottoCount);
+        OutputView.printAllLottos(lottos);
+
+        
     }
 }
