@@ -12,4 +12,7 @@ public class Messages {
 
     public static final String REQUEST_WINNING_NUMBERS_INPUT = "당첨 번호를 입력해 주세요.";
     public static final String ERROR_WIN_BONUS_DUPLICATED = "[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.";
+    public static final String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    public static final String PRINT_BEFORE_RESULT = "당첨 통계\n---";
+    public static final String PRINT_LOTTO_COUNT = "개를 구매했습니다.";
 }

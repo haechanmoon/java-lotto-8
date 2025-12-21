@@ -17,4 +17,9 @@ public class WinningNumbers {
     public boolean isContainBonus(int bonus) {
         return winningNumbers.contains(bonus);
     }
+
+    public boolean isContains(Integer num) {
+        return winningNumbers.contains(num);
+    }
+
 }

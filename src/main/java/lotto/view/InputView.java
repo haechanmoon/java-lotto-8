@@ -2,8 +2,8 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import lotto.domain.WinningNumbers;
 import lotto.utils.Validator;
 
 public class InputView {
@@ -17,13 +17,19 @@ public class InputView {
 
     public static List<Integer> winningNumbersInput() {
         String input = Console.readLine();
-        return new ArrayList<>(Integer.parseInt(Arrays.toString(input.split("[,]"))));
+        String[] numbers = input.split("[,]");
+        List<Integer> nums = new ArrayList<>();
+        for (String num : numbers) {
+            nums.add(Integer.parseInt(num));
+        }
+        return nums;
     }
 
-    public static int bonusInput(List<Integer> winningNumbers) {
+    public static int bonusInput(WinningNumbers winningNumbers) {
         String input = Console.readLine();
         Validator.validateIsEmpty(input);
         Validator.validateIsNotDigit(input);
         Validator.validateBonus(input, winningNumbers);
+        return Integer.parseInt(input);
     }
 }
